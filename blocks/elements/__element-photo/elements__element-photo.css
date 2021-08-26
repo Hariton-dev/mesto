@@ -1,0 +1,8 @@
+.elements__element-photo {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+}

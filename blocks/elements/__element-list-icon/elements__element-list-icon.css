@@ -1,0 +1,19 @@
+.elements__element-list-icon {
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/icon-heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-style: none;
+  cursor: pointer;
+  transition: opacity 0.3s linear;
+  background-color: transparent;
+}
+
+.elements__element-list-icon:hover {
+  opacity: .5;
+}
+
+.elements__element-list-icon:active {
+  background-color: #000;
+}
