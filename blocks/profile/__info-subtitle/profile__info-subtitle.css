@@ -1,7 +1,6 @@
 .profile__info-subtitle {
   margin: 0;
   padding-top: 16px;
-  font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -12,12 +11,20 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1023px) {
   .profile__info-subtitle {
-    max-width: 282px;
     padding-top: 14px;
     font-size: 14px;
     line-height: 17px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile__info-subtitle {
+    max-width: 282px;
+    /* padding-top: 14px;
+    font-size: 14px;
+    line-height: 17px; */
     text-align: center;
   }
 }

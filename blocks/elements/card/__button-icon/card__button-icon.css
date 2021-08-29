@@ -1,7 +1,7 @@
-.elements__element-list-icon {
+.card__button-icon {
   width: 22px;
   height: 19px;
-  background-image: url(../../../images/icon-heart.svg);
+  background-image: url(../../../../images/icon-heart.svg);
   background-repeat: no-repeat;
   background-position: center;
   border-style: none;
@@ -10,10 +10,10 @@
   background-color: transparent;
 }
 
-.elements__element-list-icon:hover {
+.card__button-icon:hover {
   opacity: .5;
 }
 
-.elements__element-list-icon:active {
+.card__button-icon:active {
   background-color: #000;
 }

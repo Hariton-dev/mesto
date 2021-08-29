@@ -1,7 +1,7 @@
-.elements__element-list {
+.card__element {
   margin: 0;
-  padding: 25px 15px 29px 21px;
-  list-style: none;
+  padding: 25px 20px 29px 21px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
