@@ -22,9 +22,6 @@
 @media screen and (max-width: 767px) {
   .profile__info-subtitle {
     max-width: 282px;
-    /* padding-top: 14px;
-    font-size: 14px;
-    line-height: 17px; */
     text-align: center;
   }
 }

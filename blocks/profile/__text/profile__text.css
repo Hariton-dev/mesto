@@ -1,7 +1,6 @@
 .profile__text {
   max-width: 336px;
   margin-right: auto;
-  /* padding: 0 250px 0 30px; */
   display: flex;
   flex-direction: column;
 }
@@ -9,7 +8,6 @@
   .profile__text {
     max-width: 260px;
     margin-right: auto;
-    /* padding: 0px 85px 0 30px; */
   }
 }
 
