@@ -1,0 +1,10 @@
+.profile__ava-text {
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__ava-text {
+    flex-direction: column;
+    align-items: center;
+  }
+}

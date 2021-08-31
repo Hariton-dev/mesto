@@ -3,9 +3,9 @@
   margin: 66px auto 60px;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 910px) {
   .footer {
-    margin: 66px 90px 60px;
+    margin: 66px 60px 60px;
   }
 }
 
