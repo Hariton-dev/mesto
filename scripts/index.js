@@ -54,7 +54,6 @@ const initialCards = [
 // функция открытия popup
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  // popup.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 };
@@ -62,7 +61,6 @@ function openPopup(popup) {
 // функция закрытия popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  // popup.classList.remove('popup_opened');
 };
 
 // Обработчик "отправки" формы formSubmitHandler
@@ -159,10 +157,12 @@ function createCard(cardData) {
   return cardElement;
 };
 
+// добавление карточек при загрузке страницы
 function renderCard(cardData) {
   elements.prepend(createCard(cardData));
 };
 
+// загрузка карточек на начальную страницу
 initialCards.forEach((cardData) => {
   renderCard(cardData);
 });
