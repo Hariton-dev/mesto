@@ -10,7 +10,7 @@
   border: none;
   cursor: pointer;
   transition: opacity 0.3s linear;
-  background-color: #000;
+  background-color: transparent;
   position: absolute;
   top: -41px;
   right: -41px;

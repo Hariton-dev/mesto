@@ -1,4 +1,4 @@
-.card__button-icon {
+.card__button-icon-heart {
   width: 22px;
   height: 19px;
   background-image: url(../../../images/icon-heart.svg);
@@ -10,10 +10,6 @@
   background-color: transparent;
 }
 
-.card__button-icon:hover {
+.card__button-icon-heart:hover {
   opacity: .5;
-}
-
-.card__button-icon:active {
-  background-color: #000;
 }
