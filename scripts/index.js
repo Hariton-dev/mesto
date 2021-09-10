@@ -2,24 +2,24 @@ const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddCard = document.querySelector('.popup_type_add-card');
 const popupImage = document.querySelector('.popup_type_iamge');
 
-const openPopupEditProfileButton = document.querySelector('.profile__info-edit-button');
-const openPopupAddCardButton = document.querySelector('.profile__add-button');
+const buttonOpenPopupEditProfile = document.querySelector('.profile__info-edit-button');
+const buttonOpenPopupAddCard = document.querySelector('.profile__add-button');
 
-const closePopupEditProfileButton = popupEditProfile.querySelector('.popup__close');
-const closePopupAddCardButton = popupAddCard.querySelector('.popup__close');
-const closePopupImage = popupImage.querySelector('.popup__close');
+const buttonClosePopupEditProfile = popupEditProfile.querySelector('.popup__close');
+const buttonClosePopupAddCard = popupAddCard.querySelector('.popup__close');
+const buttonClosePopupImage = popupImage.querySelector('.popup__close');
 
-const editForm = popupEditProfile.querySelector('.popup__form');
-const addCardForm = popupAddCard.querySelector('.popup__form');
+const formEditProfile = popupEditProfile.querySelector('.popup__form');
+const formAddCard = popupAddCard.querySelector('.popup__form');
 
 const profileName = document.querySelector('.profile__info-title');
 const profileJob = document.querySelector('.profile__info-subtitle');
 
-const nameInput = editForm.querySelector('.popup__input_type_name');
-const jobInput = editForm.querySelector('.popup__input_type_job');
+const nameInput = formEditProfile.querySelector('.popup__input_type_name');
+const jobInput = formEditProfile.querySelector('.popup__input_type_job');
 
-const placeInput = addCardForm.querySelector('.popup__input_type_place');
-const urlInput = addCardForm.querySelector('.popup__input_type_url');
+const placeInput = formAddCard.querySelector('.popup__input_type_place');
+const urlInput = formAddCard.querySelector('.popup__input_type_url');
 
 const imageImage = popupImage.querySelector('.popup__image');
 const imageTitle = popupImage.querySelector('.popup__image-title');
@@ -54,8 +54,6 @@ const initialCards = [
 // функция открытия popup
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
 };
 
 // функция закрытия popup
@@ -63,8 +61,8 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 };
 
-// Обработчик "отправки" формы formSubmitHandler
-function formSubmitHandler (evt) {
+// Обработчик "отправки" формы profileFormSubmitHandler
+function profileFormSubmitHandler (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
@@ -76,39 +74,41 @@ function addCardSubmitHandler (evt) {
   evt.preventDefault();
   renderCard({name: placeInput.value, link: urlInput.value})
   closePopup(popupAddCard);
-  addCardForm.reset();
+  formAddCard.reset();
 };
 
 // Открытие popupEditProfile
-openPopupEditProfileButton.addEventListener('click', () => {
+buttonOpenPopupEditProfile.addEventListener('click', () => {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
   openPopup(popupEditProfile);
 });
 
 // Закрытие popupEditProfile
-closePopupEditProfileButton.addEventListener('click', () => {
+buttonClosePopupEditProfile.addEventListener('click', () => {
   closePopup(popupEditProfile);
 });
 
 // Открытие popupAddCard
-openPopupAddCardButton.addEventListener('click', () => {
+buttonOpenPopupAddCard.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
 
 // Закрытие popupAddCard
-closePopupAddCardButton.addEventListener('click', () => {
+buttonClosePopupAddCard.addEventListener('click', () => {
   closePopup(popupAddCard);
 });
 
 // Закрытие popupImage
-closePopupImage.addEventListener('click', () => {
+buttonClosePopupImage.addEventListener('click', () => {
   closePopup(popupImage);
 });
 
-// Отправка формы editForm
-editForm.addEventListener('submit', formSubmitHandler);
+// Отправка формы formEditProfile
+formEditProfile.addEventListener('submit', profileFormSubmitHandler);
 
-// Отправка формы addCardForm
-addCardForm.addEventListener('submit', addCardSubmitHandler);
+// Отправка формы formAddCard
+formAddCard.addEventListener('submit', addCardSubmitHandler);
 
 //////////////////////////////////////////
 
