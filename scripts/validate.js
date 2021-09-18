@@ -39,11 +39,13 @@ const hasNotInputValues = (inputList) => {
 // функция выключения кнопки
 const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
   buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.disabled = true;
 };
 
 // функция включения кнопки
 const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
   buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.disabled = false;
 };
 
 // функция проверки кнопки сабмита и переключение состояния кнопки
