@@ -10,8 +10,6 @@ const buttonClosePopupEditProfile = popupEditProfile.querySelector('.popup__clos
 const buttonClosePopupAddCard = popupAddCard.querySelector('.popup__close');
 const buttonClosePopupImage = popupImage.querySelector('.popup__close');
 
-const buttonSubmitAddCard = document.querySelector('.popup__button_type_add-card');
-
 const formEditProfile = popupEditProfile.querySelector('.popup__form');
 const formAddCard = popupAddCard.querySelector('.popup__form');
 
@@ -23,6 +21,8 @@ const jobInput = formEditProfile.querySelector('.popup__input_type_job');
 
 const placeInput = formAddCard.querySelector('.popup__input_type_place');
 const urlInput = formAddCard.querySelector('.popup__input_type_url');
+
+const buttonSubmitAddCard = formAddCard.querySelector('.popup__button_type_add-card');
 
 const imageImage = popupImage.querySelector('.popup__image');
 const imageTitle = popupImage.querySelector('.popup__image-title');
