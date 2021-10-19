@@ -1,3 +1,6 @@
+import Card from './Card.js'
+import FormValidator from './FormValidator.js'
+
 // объявление констант
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddCard = document.querySelector('.popup_type_add-card');
@@ -27,6 +30,12 @@ const buttonSubmitAddCard = formAddCard.querySelector('.popup__button_type_add-c
 const imageImage = popupImage.querySelector('.popup__image');
 const imageTitle = popupImage.querySelector('.popup__image-title');
 
+const elements = document.querySelector('.elements');
+
+// массив попапов
+const popupList = Array.from(document.querySelectorAll('.popup'));
+
+
 
 const initialCards = [
   {
@@ -54,6 +63,21 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+export const configValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_visible'
+}
+
+// валидация форм
+const validationEditProfileForm = new FormValidator(configValidation, formEditProfile) ;
+validationEditProfileForm.enableValidation();
+const validationAddCardForm = new FormValidator(configValidation, formAddCard);
+validationAddCardForm.enableValidation();
 
 // функция открытия popup
 function openPopup(popup) {
@@ -119,51 +143,18 @@ formEditProfile.addEventListener('submit', profileFormSubmitHandler);
 // отправка формы formAddCard
 formAddCard.addEventListener('submit', addCardSubmitHandler);
 
-//////////////////////////////////////////
-
-const cardTemplate = document.querySelector('#card-template').content;
-const elements = document.querySelector('.elements');
-
-// функция активизации лайка
-function handleLikeClick(evt) {
-  evt.target.classList.toggle('card__button-icon-heart_active');
-};
-
-// функция удаление карточки
-function handleDeleteClick(evt) {
-  evt.target.closest('.card').remove();
-};
-
-// функция открытия картинки (нужно исправить)
-function handleImageClick(cardData) {
-  imageImage.src = cardData.link;
-  imageImage.alt = cardData.name;
-  imageTitle.textContent = cardData.name;
+// функция открытия картинки
+export function handleImageClick(name, link) {
+  imageImage.src = link;
+  imageImage.alt = name;
+  imageTitle.textContent = name;
   openPopup(popupImage);
 };
 
 // функция создания карточки
 function createCard(cardData) {
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-
-  const cardImage = cardElement.querySelector('.card__photo');
-  const cardTitle = cardElement.querySelector('.card__title');
-  const cardLikeButton = cardElement.querySelector('.card__button-icon-heart');
-  const cardDeleteButton = cardElement.querySelector('.card__button-icon-delete');
-
-  cardLikeButton.addEventListener('click', handleLikeClick);
-
-  cardDeleteButton.addEventListener('click', handleDeleteClick);
-
-  cardImage.addEventListener('click', () => {
-    handleImageClick(cardData);
-  });
-
-  cardTitle.textContent = cardData.name;
-  cardImage.src = cardData.link;
-  cardImage.alt = cardData.name;
-
-  return cardElement;
+  const card = new Card(cardData, '#card-template');
+  return card.generateCard();
 };
 
 // добавление карточек при загрузке страницы
@@ -175,11 +166,6 @@ function renderCard(cardData) {
 initialCards.forEach((cardData) => {
   renderCard(cardData);
 });
-
-//////////////////////////////////////////
-
-// массив попапов
-const popupList = Array.from(document.querySelectorAll('.popup'));
 
 // функция закрытия по esc
 function keyHandler(evt) {
