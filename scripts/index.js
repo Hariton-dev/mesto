@@ -25,8 +25,6 @@ const jobInput = formEditProfile.querySelector('.popup__input_type_job');
 const placeInput = formAddCard.querySelector('.popup__input_type_place');
 const urlInput = formAddCard.querySelector('.popup__input_type_url');
 
-const buttonSubmitAddCard = formAddCard.querySelector('.popup__button_type_add-card');
-
 const imageImage = popupImage.querySelector('.popup__image');
 const imageTitle = popupImage.querySelector('.popup__image-title');
 
@@ -88,7 +86,7 @@ function openPopup(popup) {
 // функция закрытия popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('click', keyHandler);
+  document.removeEventListener('keydown', keyHandler);
 };
 
 // обработчик "отправки" формы profileFormSubmitHandler
@@ -106,8 +104,7 @@ function addCardSubmitHandler (evt) {
   closePopup(popupAddCard);
   formAddCard.reset();
   // деактивация кнопки сабмита
-  buttonSubmitAddCard.classList.add('popup__button_disabled');
-  buttonSubmitAddCard.disabled = true;
+  validationAddCardForm.disableSubmitButton();
 };
 
 // открытие popupEditProfile
@@ -170,13 +167,15 @@ initialCards.forEach((cardData) => {
 // функция закрытия по esc
 function keyHandler(evt) {
   if (evt.key === 'Escape') {
-    popupList.forEach((popup) => {
-      if (popup.classList.contains('popup_opened')) {
-        closePopup(popup);
-      };
-    });
+    closedOpenedPopup();
   };
 };
+
+// функция закрытия открытого попапа
+function closedOpenedPopup() {
+  const popupOpened = document.querySelector('.popup_opened');
+  closePopup(popupOpened);
+}
 
 // закрытие попапа на оверлей
 popupList.forEach((popup) => {

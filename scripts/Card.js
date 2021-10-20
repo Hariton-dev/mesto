@@ -66,6 +66,8 @@ export default class Card {
   // удаление карточки
   _handleDeleteClick() {
     this._element.remove();
+    // очистим ссылку на DOM-элемент
+    this._element = null;
   };
 
 }
