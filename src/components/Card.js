@@ -1,11 +1,10 @@
-// import { handleImageClick } from '../pages/index.js';
-
 export default class Card {
   // передадим данные в виде объекта (data) и
   // чтобы выбирать из нескольких шаблонов,
   // сделаем селектор частью конструктора класса
-  constructor(data, cardSelector, { handleCardClick }) {
-    this._data = data;
+  constructor({ link, name}, cardSelector, handleCardClick) {
+    this._link = link;
+    this._name = name;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -30,10 +29,9 @@ export default class Card {
     this._setEventListeners();
 
     // Добавим данные
-    this._element.querySelector('.card__photo').src = this._data.link;
-    this._element.querySelector('.card__photo').alt = this._data.name;
-    this._element.querySelector('.card__title').textContent = this._data.name;
-
+    this._element.querySelector('.card__photo').src = this._link;
+    this._element.querySelector('.card__photo').alt = this._name;
+    this._element.querySelector('.card__title').textContent = this._name;
     // Вернём элемент наружу
     return this._element;
   };
@@ -43,7 +41,7 @@ export default class Card {
     // открытие картинки
     this._element.querySelector('.card__photo')
     .addEventListener('click', () => {
-      this._handleCardClick(this._data);
+      this._handleCardClick({ link: this._link, name: this._name });
     });
 
     // активизации лайка

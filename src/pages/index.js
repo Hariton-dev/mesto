@@ -41,9 +41,11 @@ const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (data) => {
 userInfoPopup.setEventListeners();
 
 // функция создания карточки
-function createCard(cardData) {
-  const handleCardClick = imagePopup.open.bind(imagePopup);
-  const card = new Card(cardData, '#card-template', { handleCardClick });
+const createCard = (data) => {
+  const card = new Card(data, '#card-template', ({ link, name }) => {
+    imagePopup.open({ link, name })
+  });
+
   return card.generateCard();
 };
 
@@ -67,6 +69,7 @@ const setValuesUserProfilePopup = () => {
   const userData = userInfo.getUserInfo();
   inputName.value = userData.name;
   inputJob.value = userData.job;
+  validationEditProfileForm.disableSubmitButton();
   userInfoPopup.open();
 }
 
@@ -74,5 +77,8 @@ const setValuesUserProfilePopup = () => {
 buttonOpenPopupEditProfile.addEventListener('click', setValuesUserProfilePopup);
 
 buttonOpenPopupAddCard.addEventListener('click', () => {
+  validationAddCardForm.disableSubmitButton();
   newCardPopup.open();
 })
+
+

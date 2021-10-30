@@ -8,11 +8,6 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
-  close() {
-    this._popupFormElement.reset();
-    super.close();
-  }
-
   // добавляет обработчик клика иконке закрытия
   // и добавляет обработчик сабмита формы
   setEventListeners() {
@@ -33,5 +28,10 @@ export default class PopupWithForm extends Popup {
     });
 
     return formValues;
+  }
+
+  close() {
+    this._popupFormElement.reset();
+    super.close();
   }
 }
