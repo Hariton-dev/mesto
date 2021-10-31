@@ -9,6 +9,8 @@ export default class FormValidator {
 
   // функция включения видимости ошибки
   _showInputError(inputElement) {
+    // находим (errorElement), который привязан к нашему полю (inputElement)
+    this._errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._configValidation.inputErrorClass);
     // сначала наполняем элемент контентом (стандартным браузерным текстом)
     this._errorElement.textContent = inputElement.validationMessage;
@@ -18,6 +20,7 @@ export default class FormValidator {
 
   // функция скрытия видимости ошибки
   _hideInputError(inputElement) {
+    this._errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._configValidation.inputErrorClass);
     this._errorElement.classList.remove(this._configValidation.errorClass);
     this._errorElement.textContent = '';
@@ -25,8 +28,6 @@ export default class FormValidator {
 
   // функция проверки валидности поля
   _checkInputValidity(inputElement) {
-    // находим (errorElement), который привязан к нашему полю (inputElement)
-    this._errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     // если поле (inputElement) не валидное, тогда:
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
@@ -76,6 +77,14 @@ export default class FormValidator {
       this._enableSubmitButton();
     };
   };
+
+  resetValidation() {
+    this._toggleButtonState(); // управляем кнопкой
+
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement) // очищаем ошибки
+    });
+  }
 
   // навешиваем обработчики событий на формы
   _setEventListeners() {

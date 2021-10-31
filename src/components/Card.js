@@ -26,12 +26,16 @@ export default class Card {
     // Запишем разметку в приватное поле _element.
     // Так у других элементов появится доступ к ней.
     this._element = this._getTemplate();
+
+    this._cardFoto = this._element.querySelector('.card__photo');
+    this._cardTitle = this._element.querySelector('.card__title');
+
     this._setEventListeners();
 
     // Добавим данные
-    this._element.querySelector('.card__photo').src = this._link;
-    this._element.querySelector('.card__photo').alt = this._name;
-    this._element.querySelector('.card__title').textContent = this._name;
+    this._cardFoto.src = this._link;
+    this._cardTitle.alt = this._name;
+    this._cardTitle.textContent = this._name;
     // Вернём элемент наружу
     return this._element;
   };
@@ -39,7 +43,7 @@ export default class Card {
   // слушатель событий
   _setEventListeners() {
     // открытие картинки
-    this._element.querySelector('.card__photo')
+    this._cardFoto
     .addEventListener('click', () => {
       this._handleCardClick({ link: this._link, name: this._name });
     });
